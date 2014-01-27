@@ -35,7 +35,7 @@ module.exports = function(grunt) {
           repository: 'dolbyzerr/11rules',
           auth: {
             user: 'dolbyzerr',
-            password: '5435b4a3ee45f2465d735b6c2ae8314d9a77028b'
+            password: process.env.GITHUB_TERMINAL
           }
         },
         files: {
