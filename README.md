@@ -1,6 +1,6 @@
 # grunt-github-releaser
 
-> Plugin for automated github releases
+> Task for automated github releases
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -17,31 +17,35 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-github-releaser');
 ```
 
-## The "github_releaser" task
+## The "github-release" task
 
 ### Overview
-In your project's Gruntfile, add a section named `github_releaser` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `github-release` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  github_releaser: {
+  "github-release": {
     options: {
-      // Task-specific options go here.
+      repository: 'dolbyzerr/grunt-github-releaser', // Path to repository
+      auth: {   // Auth credentials, for basic authorisation, see "Personal Access Tokens" in https://github.com/settings/applications
+        user: 'dolbyzerr',
+        password: ''
+      }
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    files: {
+      src: ['dist/release.zip'] // Files that you want to attach to Release
+    }
+
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### options.repository
 Type: `String`
-Default value: `',  '`
+Default value: ``
 
-A string value that is used to do something with whatever.
 
 #### options.punctuation
 Type: `String`
