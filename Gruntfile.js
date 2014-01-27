@@ -1,6 +1,6 @@
 /*
  * grunt-github-releaser
- * https://github.com/dolby/grunt-github-releaser
+ * https://github.com/dolbyzerr/grunt-github-releaser
  *
  * Copyright (c) 2014 Andrey Terentyev
  * Licensed under the MIT license.
