@@ -27,7 +27,7 @@ grunt.initConfig({
   "github-release": {
     options: {
       repository: 'dolbyzerr/grunt-github-releaser', // Path to repository
-      auth: {   // Auth credentials, for basic authorisation, see "Personal Access Tokens" in https://github.com/settings/applications
+      auth: {   // Auth credentials
         user: 'dolbyzerr',
         password: ''
       }
@@ -46,46 +46,70 @@ grunt.initConfig({
 Type: `String`
 Default value: ``
 
+Repository path in `:owner/:repo` format.
 
-#### options.punctuation
+
+#### options.auth
 Type: `String`
-Default value: `'.'`
 
-A string value that is used to do something else with whatever else.
+Basic authorization, see "Personal Access Tokens" in https://github.com/settings/applications
+
+#### options.release
+Type: `Object`
+
+Here you can provide custom release settings, according http://developer.github.com/v3/repos/releases/#create-a-release
+These section is tottaly optional. If no `tag_name` specified than `version` field, from `package.json` will be used.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  github_releaser: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+This example will:
+ - Create tag, from `package.json` version field. For example: `0.1.16`
+ - Create Release named `0.1.16`
+ - Upload `release.zip` from `dest` folder, and attach it to release
 
 ```js
 grunt.initConfig({
   github_releaser: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      repository: 'dolbyzerr/grunt-github-releaser',
+      auth: {
+        user: 'dolbyzerr',
+        password: '123'
+      }
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dest': ['release.zip'],
     },
   },
 });
 ```
 
+#### Custom Release Options
+In this example, custom release options are used to specify custom name, description, prerelease state etc.
+
+```js
+grunt.initConfig({
+  github_releaser: {
+    options: {
+      repository: 'dolbyzerr/grunt-github-releaser',
+      auth: {
+        user: 'dolbyzerr',
+        password: '123'
+      },
+      release: {
+        tag_name: 'v3-rc',
+        name: 'jelly-bean',
+        body: 'Description of the release',
+        draft: false, 
+        prerelease: true
+      }
+    },
+    files: {
+      'dest': ['release.zip'],
+    },
+  },
+});
+```
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
