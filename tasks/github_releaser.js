@@ -23,7 +23,6 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       api: "https://api.github.com/repos/",
-      releaseFile: "release.zip",
       version: grunt.file.readJSON('package.json').version,
     });
 
@@ -130,54 +129,6 @@ module.exports = function(grunt) {
       });
     });
 
-    // getReleases(function (err, resp, body) {
-    //     // убеждаемся что релизы взялись (в противном случае свалимся на попытке парса body
-    //     if (err){
-    //         return showError(err);
-    //     }
-
-    //     var releases = JSON.parse(body);
-    //     addRelease(version, function (err, resp, body) {
-    //         var release = JSON.parse(body);
-    //         if (release.errors && release.errors.length > 0) {
-    //             showError(["Error while creating release " + version + ":", release.errors]);
-    //         }
-    //         grunt.log.ok("addRelease version : " + version);
-    //         uploadAsset(release, options.cwd, options.file, function () {
-
-    //             grunt.log.ok("Upload complete. Tag name " + version);
-    //         })
-    //     });
-
-    // });
-
-
-
-    // Iterate over all specified file groups.
-    // this.files.forEach(function(f) {
-    //   // Concat specified files.
-    //   var src = f.src.filter(function(filepath) {
-    //     // Warn on and remove invalid source files (if nonull was set).
-    //     if (!grunt.file.exists(filepath)) {
-    //       grunt.log.warn('Source file "' + filepath + '" not found.');
-    //       return false;
-    //     } else {
-    //       return true;
-    //     }
-    //   }).map(function(filepath) {
-    //     // Read file source.
-    //     return grunt.file.read(filepath);
-    //   }).join(grunt.util.normalizelf(options.separator));
-
-    //   // Handle options.
-    //   src += options.punctuation;
-
-    //   // Write the destination file.
-    //   grunt.file.write(f.dest, src);
-
-    //   // Print a success message.
-    //   grunt.log.writeln('File "' + f.dest + '" created.');
-    // });
   });
 
 };
