@@ -121,9 +121,10 @@ module.exports = function(grunt) {
           });
 
           async.map(src, uploadAsset, function(err, result){
-            if(err) return showError('Some files are failed to upload');
+            if(err) return showError('Some files failed to upload');
 
-            grunt.log.oklns('Uploade complete');
+            grunt.log.oklns('Upload complete');
+            done();
           });
 
         });
