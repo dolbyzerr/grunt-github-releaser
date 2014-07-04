@@ -1,7 +1,7 @@
 {
   "name": "grunt-github-releaser",
   "description": "Task for automating github releases",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "homepage": "https://github.com/dolbyzerr/grunt-github-releaser",
   "author": {
     "name": "Andrey Terentyev",
