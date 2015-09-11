@@ -58,7 +58,7 @@ module.exports = function(grunt) {
     };
 
     var makeUploadUrl = function (uploadUrl, filename) {
-        return uploadUrl.replace(/{(\S+)}/gi, '$1=' + filename);
+        return uploadUrl.replace(/{(\S+)}/gi, '?name=' + filename);
     };
 
     var showError = function (err, noExit) {
