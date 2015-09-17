@@ -12,7 +12,8 @@ var request = require('request'),
     fs = require('fs'),
     path = require('path'),
     _ = require('underscore'),
-    async = require('async');
+    async = require('async'),
+    template = require('url-template');
 
 module.exports = function(grunt) {
 
@@ -57,8 +58,11 @@ module.exports = function(grunt) {
         });
     };
 
-    var makeUploadUrl = function (uploadUrl, filename) {
-        return uploadUrl.replace(/{(\S+)}/gi, '?name=' + filename);
+      var makeUploadUrl = function (uploadUrl, filename) {
+        var uploadTemplate = template.parse(uploadUrl);
+        return uploadTemplate.expand({
+          name: filename
+        });
     };
 
     var showError = function (err, noExit) {
